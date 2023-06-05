@@ -18,4 +18,4 @@ alert("Bienvenido/a a Kiosco Juancho!");
 let persona= personaRegalo()
 console.log(persona)
 let orden=agregarProductos()
-console.log("Tu orden es " + orden + ". Sera enviada a " +  persona + ".")
+alert("Tu orden es " + orden + ". Sera enviada a " +  persona + ".")
