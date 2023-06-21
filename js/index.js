@@ -75,7 +75,7 @@ function elegirProducto() {
      4. ${chupetinPop.nombre}: ${chupetinPop.descripcion} - $${chupetinPop.precio}
      5. ${gaseosaCocaCola.nombre}: ${gaseosaCocaCola.descripcion} - $${gaseosaCocaCola.precio}`)
 
-     productoIngresado.toUpperCase()
+     productoIngresado=productoIngresado.toUpperCase()
 
      while(productoIngresado!="ESC"){
         switch(productoIngresado){
@@ -115,7 +115,7 @@ function elegirProducto() {
         3. ${chocolateAguila.nombre}: ${chocolateAguila.descripcion} - $${chocolateAguila.precio}
         4. ${chupetinPop.nombre}: ${chupetinPop.descripcion} - $${chupetinPop.precio}
         5. ${gaseosaCocaCola.nombre}: ${gaseosaCocaCola.descripcion} - $${gaseosaCocaCola.precio}`)
-        productoIngresado.toUpperCase()
+        productoIngresado=productoIngresado.toUpperCase()
    
     }
     menu()
@@ -138,7 +138,7 @@ function eliminarProductos(){
     for (const x of carrito){
         alert(x.nombre + x.descripcion + x.precio)
         let productoEliminar=prompt("Desea eliminar este producto? Responde SI o NO")
-        productoEliminar.toUpperCase()
+        productoEliminar=productoEliminar.toUpperCase()
         if (productoEliminar=="SI"){
             let posicion=carrito.indexOf(x)
             carrito.splice(posicion, 1)
