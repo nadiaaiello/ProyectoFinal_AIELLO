@@ -30,12 +30,13 @@ function menu() {
 }
 
 function elegirPaquete() {
-    let paqueteIngresado=(prompt(`A quien le vas a regalar hoy?
+    let paqueteIngresado=prompt(`A quien le vas a regalar hoy? Ingresa una opcion o "ESC" para regresar al menu
     1.${paqueteFamiliar.nombre}: ${paqueteFamiliar.descripcion} - $${paqueteFamiliar.precio}
     2.${paqueteAmigos.nombre}: ${paqueteAmigos.descripcion} - $${paqueteAmigos.precio}
     3.${paquetePareja.nombre}: ${paquetePareja.descripcion} - $${paquetePareja.precio}
     4.${paquetePropio.nombre}: ${paquetePropio.descripcion} - $${paquetePropio.precio}
-     `))
+     `)
+     paqueteIngresado=paqueteIngresado.toUpperCase()
 
      switch(paqueteIngresado){
         case "1":
@@ -57,8 +58,11 @@ function elegirPaquete() {
             paquete=paquetePropio
             precio=precio+ paquetePropio.precio
             break
-
-
+        
+        case "ESC":
+            menu()
+            break
+            
         default: 
             alert("La opcion ingresada es innexistente")
             elegirPaquete()
@@ -68,7 +72,7 @@ function elegirPaquete() {
 }
 
 function elegirProducto() {
-    let productoIngresado=prompt(`Para agregar un producto ingrese el numero que lo precede o escribe "ESC" regresar al menu.
+    let productoIngresado=prompt(`Para agregar un producto ingrese el numero que lo precede o escribe "ESC" para regresar al menu.
      1.  ${BonoBon.nombre}: ${BonoBon.descripcion} - $${BonoBon.precio}
      2. ${chicleBubbaloo.nombre}: ${chicleBubbaloo.descripcion} - $${chicleBubbaloo.precio}
      3. ${chocolateAguila.nombre}: ${chocolateAguila.descripcion} - $${chocolateAguila.precio}
@@ -82,26 +86,31 @@ function elegirProducto() {
             case "1":
                 carrito.push(BonoBon)
                 precio=precio+ BonoBon.precio
+                alert(BonoBon.nombre+" fue agregado al carrito")
                 break
 
             case "2":
                 carrito.push(chicleBubbaloo)
                 precio=precio+ chicleBubbaloo.precio
+                alert(chicleBubbaloo.nombre+" fue agregado al carrito")
                break
 
             case "3":
                 carrito.push(chocolateAguila)
                 precio=precio+ chocolateAguila.precio
+                alert(chocolateAguila.nombre+" fue agregado al carrito")
                 break
             
             case "4":
                 carrito.push(chupetinPop)
                 precio=precio+ chupetinPop.precio
+                alert(chupetinPop.nombre+" fue agregado al carrito")
                 break
 
             case "5":
                 carrito.push(gaseosaCocaCola)
                 precio=precio+ gaseosaCocaCola.precio
+                alert(gaseosaCocaCola.nombre+" fue agregado al carrito")
                 break
 
             default: 
