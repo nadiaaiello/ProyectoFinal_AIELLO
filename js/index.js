@@ -68,12 +68,12 @@ function elegirPaquete() {
 }
 
 function elegirProducto() {
-    let productoIngresado=prompt(`Para agregar un producto ingrese el numero que lo precede o escribe "ESC" regresar al menu.
+    let productoIngresado=upperCase(prompt(`Para agregar un producto ingrese el numero que lo precede o escribe "ESC" regresar al menu.
      1.  ${BonoBon.nombre}: ${BonoBon.descripcion} - $${BonoBon.precio}
      2. ${chicleBubbaloo.nombre}: ${chicleBubbaloo.descripcion} - $${chicleBubbaloo.precio}
      3. ${chocolateAguila.nombre}: ${chocolateAguila.descripcion} - $${chocolateAguila.precio}
      4. ${chupetinPop.nombre}: ${chupetinPop.descripcion} - $${chupetinPop.precio}
-     5. ${gaseosaCocaCola.nombre}: ${gaseosaCocaCola.descripcion} - $${gaseosaCocaCola.precio}`)
+     5. ${gaseosaCocaCola.nombre}: ${gaseosaCocaCola.descripcion} - $${gaseosaCocaCola.precio}`))
 
      while(productoIngresado!="ESC"){
         switch(productoIngresado){
@@ -107,12 +107,12 @@ function elegirProducto() {
                 break
         }
 
-        productoIngresado=prompt(`Para agregar un producto ingrese el numero que lo precede o escribe "ESC" regresar al menu.
+        productoIngresado=upperCase(prompt(`Para agregar un producto ingrese el numero que lo precede o escribe "ESC" regresar al menu.
         1.  ${BonoBon.nombre}: ${BonoBon.descripcion} - $${BonoBon.precio}
         2. ${chicleBubbaloo.nombre}: ${chicleBubbaloo.descripcion} - $${chicleBubbaloo.precio}
         3. ${chocolateAguila.nombre}: ${chocolateAguila.descripcion} - $${chocolateAguila.precio}
         4. ${chupetinPop.nombre}: ${chupetinPop.descripcion} - $${chupetinPop.precio}
-        5. ${gaseosaCocaCola.nombre}: ${gaseosaCocaCola.descripcion} - $${gaseosaCocaCola.precio}`)
+        5. ${gaseosaCocaCola.nombre}: ${gaseosaCocaCola.descripcion} - $${gaseosaCocaCola.precio}`))
    
     }
     menu()
@@ -134,7 +134,7 @@ function mostrarOrden(){
 function eliminarProductos(){
     for (const x of carrito){
         alert(x.nombre + x.descripcion + x.precio)
-        let productoEliminar=prompt("Desea eliminar este producto? Responde SI o NO")
+        let productoEliminar=upperCase(prompt("Desea eliminar este producto? Responde SI o NO"))
         console.log(carrito.indexOf(x))
         if (productoEliminar=="SI"){
             let posicion=carrito.indexOf(x)
