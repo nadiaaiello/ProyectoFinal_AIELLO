@@ -9,23 +9,23 @@ function menu() {
     switch(opcionMenu){
         case 1:
             elegirProducto()
-            break
+        
         case 2:
             mostrarOrden()  
-            break
+
         case 3:
             eliminarProductos()
-            break
+
         case 4:
             elegirPaquete()
-            break
+
         case 5:
             pagar() 
             break   
         default:
             alert("Ingrese una opcion existente")    
             menu()
-            break
+
     } 
 }
 
