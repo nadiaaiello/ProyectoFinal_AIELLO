@@ -144,7 +144,7 @@ function mostrarOrden(){
 }
 
 function eliminarProductos(){
-    for (const x of carrito){
+    for ( x of carrito){
         alert(x.nombre + x.descripcion + x.precio)
         let productoEliminar=prompt("Desea eliminar este producto? Responde SI o NO")
         productoEliminar=productoEliminar.toUpperCase()
@@ -227,6 +227,5 @@ let paquete=Object
 let precio=0
 
 
-alert("Bienvenido/a a Kiosco Juancho!");
-menu()
+
 

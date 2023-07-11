@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kiosco Juancho</title>
+    <link rel="shortcut icon" href="../img/KJ.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="row">
+            <div class="col-6 col-lg-6 logo">
+                <img src="../img/KJ.png">
+            </div>
+            <div class="col-6 col-lg-6">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./productos.html">Productos</a></li>
+                    <li><a href="">Contacto</a></li>
+                    <li><i class="bi bi-cart4"></i></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+            <div class="row">
+                <!-- <div class="col-3 col-lg-3">
+                    <h2>Categorias</h2>
+                </div> -->
+                <div class="col-12 col-lg-12 d-flex justify-content-start">
+                    <div class="agregarProducto">
+                        <button>Agregar nuevo producto</button>
+                    </div>
+                    <div class="orden d-flex align-items-center justify-content-end">
+                        <h3>Ordenar por:</h3>
+                        <select name="orden" id="">
+                            <option value="1">Precio(Mayor a menor)</option>
+                            <option value="2">Precio(Menor a mayor)</option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                        </select>    
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                    <!-- <div class="col-3 col-lg-3">
+                        <div class="form-check">
+                            <input type="checkbox" value="1" id="">
+                            <label>Default checkbox</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" value="2" id="">
+                            <label>Default checkbox</label>
+                        </div>
+                    </div> -->
+                    <div class="col-12 col-lg-12">
+                        <div class="row" id="productos"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="../js/productos.js"></script>
+</body>  
+</html>  
