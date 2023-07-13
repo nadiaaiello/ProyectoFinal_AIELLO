@@ -1,7 +1,9 @@
-//CAPTURAR ELEMENTOS
+//CAPTURAR DOM
 let divProductos=document.getElementById("productos")
 let selectOrder=document.getElementById("selectOrden")
 
+
+//OBJETOS
 const bonObon={
     nombre: "Bon o Bon",
     precio: 100,
@@ -46,6 +48,8 @@ const gaseosaCocaCola={
 
 const productos=[bonObon,chicleBubbaloo,chocolateAguila,gaseosaCocaCola,chupetinPop]
 
+const productosEnCarrito=[]
+
 
 const paqueteFamiliar={
     nombre: "Paquete Familiar",
@@ -71,8 +75,38 @@ const paquetePropio={
     descripcion: "Incluye bolsa, empapelado color violeta."
 }
 
-function ordenarAlfabeticamente() {
-    
+
+//FUNCTIONS
+function agregarAlCarrito(producto){
+    let productoAgregado = productosEnCarrito.find((elem)=>elem.id == producto.id) 
+    if(productoAgregado == undefined){
+       productosEnCarrito.push(producto)
+       localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+       console.log(productosEnCarrito)
+ 
+       //alert para agregar libro
+       Swal.fire({
+          title: `Ha agregado un producto al carrito`,
+          text:`${producto.nombre} ha sido agregado`,
+          confirmButtonColor: "green",
+          confirmButtonText : "Gracias :D",
+          imageUrl: `assets/${libro.imagen}`,
+          imageHeight: 200
+ 
+       })
+    }else{
+        Swal.fire({
+           title: `El producto ya existe en el carrito`,
+           icon: "info",
+           //tiempo de aparición: en milisegundos
+           timer: 3000,
+           showConfirmButton: false
+  
+        })
+     }
+  }
+
+function ordenarAlfabeticamente() {   
 }
 
 function printProductos(array){
@@ -86,13 +120,54 @@ function printProductos(array){
                                 <h4>${elemento.nombre}</h4>
                                 <p>${elemento.descripcion}<p/>
                                 <b class="d-inline me-3">$${elemento.precio}</b>
-                                <button><i class="bi bi-cart4"></i>Agregar al carrito</button>
+                                <button id='agregarBtn${elemento.id}'><i class="bi bi-cart4"></i>Agregar al carrito</button>
                                 </div>
                             </div>`
     
     divProductos.appendChild(nuevoProducto)  
+    let agregarBtn = document.getElementById(`agregarBtn${elemento.id}`)
+
+    agregarBtn.addEventListener("click", () => {
+       agregarAlCarrito(elemento)
+    })
     } 
 }                    
+
+function agregarAlCarrito(elemento) {
+        //preguntar si existe ese libro en el array
+        let libroAgregado = productosEnCarrito.find((elem)=>elem.id == elemento.id) 
+        //me devuelve sino encuentra undefined, si encuenta el elemento
+        if(libroAgregado == undefined){
+           //código para sumar al array carrito
+           productosEnCarrito.push(elemento)
+           localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+           console.log(productosEnCarrito)
+     
+           //alert para agregar libro
+           alert(
+     `Ha agregado un producto al carrito`,
+  
+   
+         )
+
+           
+        }else{
+           //sumar uno a cantidad
+           // console.log(`El libro ${libro.titulo} ya existe en el carrito `)
+     
+           //Sweetalert 
+           Swal.fire({
+              title: `El libro ya existe en el carrito`,
+              icon: "info",
+              //tiempo de aparición: en milisegundos
+              timer: 2000,
+              showConfirmButton: false
+     
+           })
+        }
+     }
+
+
 
 function agregarProducto(){
 
