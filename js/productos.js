@@ -4,54 +4,18 @@ let selectOrder=document.getElementById("selectOrden")
 let botonCarrito=document.getElementById("botonCarrito")
 let modalCarrito=document.getElementById("modal-bodyCarrito")
 
-//OBJETOS
-const bonObon={
-    nombre: "Bon o Bon",
-    precio: 100,
-    descripcion: "Bombón de chocolate con leche y oblea rellenos con crema de maní.",
-    img:"bonObon.jpg",
-    id:1
+
+let productosEnCarrito = []
+if(localStorage.getItem("carrito")){
+   for(let producto of JSON.parse(localStorage.getItem("carrito"))){
+      let productoStorage = new producto(producto.id, producto.nombre,producto.descripcion, producto.precio, producto.img)
+      productosEnCarrito.push(productoStorage)
+   }
+   console.log(productosEnCarrito)
+}else{
+   productosEnCarrito = []
+   localStorage.setItem("carrito", productosEnCarrito)
 }
-
-const chicleBubbaloo={
-    nombre: "Chicle Bubbaloo",
-    precio: 20,
-    descripcion: "Chicle de fresa relleno de jugoso caramelo líquido de tuttifruti.",
-    img:"chicleBubbaloo.webp",
-    id:2
-}
-
-const chocolateAguila={
-    nombre: "Chocolate Aguila",
-    precio: 240,
-    descripcion: "Barrita de chocolate amargo",
-    img:"chocolateAguila.png",
-    id:3
-
-}
-
-const chupetinPop={
-    nombre:"Chupetin Pop",
-    precio: 50,
-    descripcion: "Chupetin Arcor Mr POPs Sabor blueberry con chicle tutti frutti.",
-    img:"chupetinPop.jpg",
-    id:4
-}
-
-const gaseosaCocaCola={
-    nombre: "Gaseosa Coca Cola",
-    precio:100,
-    descripcion: "Bebida azucarada gaseosa. 500ml",
-    img:"gaseosaCocaCola.png",
-    id:5
-
-}
-
-
-//ARRAYS
-const productos=[bonObon,chicleBubbaloo,chocolateAguila,gaseosaCocaCola,chupetinPop]
-
-const productosEnCarrito=[]
 
 
 //FUNCTIONS
@@ -183,4 +147,5 @@ selectOrden.addEventListener("change",()=>{
 
 )
 
-botonCarrito.addEventListener("click",verCarrito(productosEnCarrito))
+botonCarrito.addEventListener("click",()=>{
+verCarrito(productosEnCarrito)})
