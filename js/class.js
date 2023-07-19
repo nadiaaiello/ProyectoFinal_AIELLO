@@ -24,17 +24,8 @@ class producto{
 
 
  //CREAR UN ARRAY DE OBJETOS
-let productos = [] 
+let stock = []
+stock.push(producto1,producto2,producto3,producto4,producto5)
 
-if(localStorage.getItem("productos")){
-    
-    //ATENCIÓN TAMBIEN TENEMOS QUE HACERLO EN ESTANTERIA lo de tomar cada objeto y pasarlo por la class constructora
-    for(let producto of JSON.parse(localStorage.getItem("productos"))){
-        let productoStock = new producto(producto.id, producto.nombre, producto.descripcion, producto.precio, producto.img)
-        productos.push(productoStock)
-     }
-}else{
-    console.log(`ENTRA POR PRIMERA VEZ. SETEAMOS ARRAY`)
-    productos.push(producto1, producto2, producto3, producto4, producto5)
-    localStorage.setItem("productos", JSON.stringify(productos))
-}
+
+

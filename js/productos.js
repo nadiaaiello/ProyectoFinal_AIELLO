@@ -3,32 +3,17 @@ let divProductos=document.getElementById("productos")
 let selectOrder=document.getElementById("selectOrden")
 let botonCarrito=document.getElementById("botonCarrito")
 let modalCarrito=document.getElementById("modal-bodyCarrito")
-
-
-let productosEnCarrito = []
-if(localStorage.getItem("carrito")){
-   for(let producto of JSON.parse(localStorage.getItem("carrito"))){
-      let productoStorage = new producto(producto.id, producto.nombre,producto.descripcion, producto.precio, producto.img)
-      productosEnCarrito.push(productoStorage)
-   }
-   console.log(productosEnCarrito)
-}else{
-   productosEnCarrito = []
-   localStorage.setItem("carrito", productosEnCarrito)
-}
+let botonFinalizarCompra=document.getElementById("botonFinalizarCompra")
 
 
 //FUNCTIONS
-function ordenarAlfabeticamente() {   
-}
-
 function printProductos(array){
     for(let elemento of array){
         let nuevoProducto=document.createElement("div")
         nuevoProducto.className="col-9 col-lg-4"
     
-        nuevoProducto.innerHTML=`<div class="card" id="${elemento.id}">
-                                <img src="../img/productos/${elemento.img}">
+        nuevoProducto.innerHTML=`<div class="card m-2" id="${elemento.id}">
+                                <img src="./img/productos/${elemento.img}" style="max-height: 427px">
                                 <div class="card-body">
                                 <h4>${elemento.nombre}</h4>
                                 <p>${elemento.descripcion}<p/>
@@ -53,39 +38,50 @@ function agregarAlCarrito(elemento) {
         if(productoAgregado == undefined){
            //código para sumar al array carrito
            productosEnCarrito.push(elemento)
-           localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+           localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito))
            console.log(productosEnCarrito)
      
            //alert para agregar libro
-           alert(
-     `Ha agregado un producto al carrito`,
-  
-   
-         )
-
+           Swal.fire(
+            'Producto agregado al carrito',
+            '',
+            'success'
+          )
            
         }else{
-           alert("El producto ya existe en el carrito")
+            Swal.fire(
+                'El producto ya existe en el carrito',
+                '',
+                'error'
+              )
+          
         }
      }
 
 
-function verCarrito(array){
+function printCarrito(array){
    modalCarrito.innerHTML = ``
-   for(let elemento of array){
-    let nuevoProducto=document.createElement("div")
-    nuevoProducto.className="col-9 col-lg-4"
-    nuevoProducto.innerHTML=`<div class="card" id="${elemento.id}">
-                            <img src="../img/productos/${elemento.img}">
-                            <div class="card-body">
-                            <h4>${elemento.nombre}</h4>
-                            <p>${elemento.descripcion}<p/>
-                            <b class="d-inline me-3">$${elemento.precio}</b>
-                            <button id='agregarBtn${elemento.id}'><i class="bi bi-cart4"></i>Agregar al carrito</button>
-                            </div>
-                        </div>`
+   if (array.length>0){
+    botonFinalizarCompra.className="d-block btn btn-success"
+    for(let elemento of array){
+        let producto=document.createElement("div")
+        producto.className="d-flex"
+        producto.innerHTML=`<div id="${elemento.id}" style="display:flex; align-items:center; border-style:solid; border-width:0.5px; border-color:grey">
+                                <img src="./img/productos/${elemento.img}" style="width:150px; display:inline; margin:5px">
+                                <div style="margin:5px">
+                                <h4>${elemento.nombre}</h4>
+                                <b class="d-inline me-3">$${elemento.precio}</b>
+                                </div>
+                            </div>`
+    
+    modalCarrito.appendChild(producto)}
+   }
+   else{
+    modalCarrito.innerHTML='<p>El carrito esta vacio</p>'
+    botonFinalizarCompra.className="d-none"
+   }
 
-modalCarrito.appendChild(nuevoProducto)}}
+}
 
 function ordenarMenorMayor(array) {
     const menorMayor= [].concat(array)
@@ -117,30 +113,31 @@ function ordenarAlfabeticamente(array){
     )
     printProductos(arrayAlfabetico)}
 
-printProductos(productos)
-
+function calcularPrecio(elemento){
+    precioTotal=precioTotal+elemento.precio
+}
 
 //EVENTOS
 selectOrden.addEventListener("change",()=>{
     switch (selectOrden.value) {
         case "1":
             resetDivProductos()
-            ordenarMayorMenor(productos)
+            ordenarMayorMenor(stock)
             break;
         
         case "2":
             resetDivProductos()
-            ordenarMenorMayor(productos)  
+            ordenarMenorMayor(stock)  
         break     
         
         case "3":
             resetDivProductos()
-            ordenarAlfabeticamente(productos) 
+            ordenarAlfabeticamente(stock) 
 
         break 
         default:
             resetDivProductos()
-            printProductos(productos)
+            printProductos(stock)
             break;
     }
 }
@@ -148,4 +145,30 @@ selectOrden.addEventListener("change",()=>{
 )
 
 botonCarrito.addEventListener("click",()=>{
-verCarrito(productosEnCarrito)})
+printCarrito(productosEnCarrito)})
+
+botonFinalizarCompra.addEventListener("click",()=>{
+    productosEnCarrito.forEach(calcularPrecio);
+    localStorage.removeItem("productosEnCarrito")
+    productosEnCarrito=[]
+    Swal.fire({
+        text:`Su compra tiene un total de $${precioTotal}. Gracias por confiar en Kiosco Juancho`},
+        '',
+        'success'
+      )
+    precioTotal=0
+})
+
+
+//INICIO DE LA APLICACION
+printProductos(stock)
+
+let productosEnCarrito = []
+let precioTotal =0
+
+if (localStorage.getItem("productosEnCarrito")){
+    productosEnCarrito=JSON.parse(localStorage.getItem("productosEnCarrito"))
+}
+else{
+    localStorage.setItem("productosEnCarrito",JSON.stringify(productosEnCarrito))
+}
