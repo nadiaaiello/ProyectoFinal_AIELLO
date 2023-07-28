@@ -32,7 +32,7 @@ function printProductos(array){
 }                    
 
 function agregarAlCarrito(elemento) {
-        //preguntar si existe ese libro en el array
+        //si la cantidad es igual a 0, agregar al carrito
         let productoAgregado = productosEnCarrito.find((elem)=>elem.id == elemento.id) 
         //me devuelve sino encuentra undefined, si encuenta el elemento
         if(productoAgregado == undefined){
@@ -40,21 +40,11 @@ function agregarAlCarrito(elemento) {
            productosEnCarrito.push(elemento)
            localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito))
            console.log(productosEnCarrito)
-     
-           //alert para agregar libro
-           Swal.fire(
-            'Producto agregado al carrito',
-            '',
-            'success'
-          )
+           
+        
            
         }else{
-            Swal.fire(
-                'El producto ya existe en el carrito',
-                '',
-                'error'
-              )
-          
+            
         }
      }
 
@@ -70,7 +60,9 @@ function printCarrito(array){
                                 <img src="./img/productos/${elemento.img}" style="width:150px; display:inline; margin:5px">
                                 <div style="margin:5px">
                                 <h4>${elemento.nombre}</h4>
+                                <p>Cantidad:${elemento.cantidad}</p>
                                 <b class="d-inline me-3">$${elemento.precio}</b>
+                                <b class="d-inline me-3">$${elemento.precio * elemento.cantidad}</b>
                                 </div>
                             </div>`
     
@@ -113,8 +105,10 @@ function ordenarAlfabeticamente(array){
     )
     printProductos(arrayAlfabetico)}
 
+
+
 function calcularPrecio(elemento){
-    precioTotal=precioTotal+elemento.precio
+    precioTotal+=(elemento.precio * elemento.cantidad)
 }
 
 //EVENTOS
@@ -148,7 +142,10 @@ botonCarrito.addEventListener("click",()=>{
 printCarrito(productosEnCarrito)})
 
 botonFinalizarCompra.addEventListener("click",()=>{
-    productosEnCarrito.forEach(calcularPrecio);
+    for (let elem of productosEnCarrito){
+        calcularPrecio(elem)
+        elem.cantidad=1
+    };
     localStorage.removeItem("productosEnCarrito")
     productosEnCarrito=[]
     Swal.fire({
@@ -157,6 +154,7 @@ botonFinalizarCompra.addEventListener("click",()=>{
         'success'
       )
     precioTotal=0
+
 })
 
 

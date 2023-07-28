@@ -1,0 +1,67 @@
+[
+    {
+        "id":1,
+        "nombre":"Bon o Bon",
+        "descripcion":"Bombon de chocolate con leche y oblea rellenos con crema de mani.", 
+        "precio":120,
+        "img":"bonObon.jpg"
+
+    },
+    {
+        "id":2,
+        "nombre":"Chicle Bubbaloo x3",
+        "descripcion":"Chicle de fresa relleno de jugoso caramelo líquido de tuttifruti.", 
+        "precio":60,
+        "img":"chicleBubbaloo.webp"
+    },
+    {
+        "id":3,
+        "nombre":"Chupetin Pop x3",
+        "descripcion":"Chupetin Arcor Mr POPs. Sabor blueberry con chicle tutti frutti", 
+        "precio":150,
+        "img":"chupetinPop.jpg"
+    },
+    {
+        "id":4,
+        "nombre":"Chocolate Aguila",
+        "descripcion":"Chicle de fresa relleno de jugoso caramelo líquido de tuttifruti.", 
+        "precio":140,
+        "img":"chocolateAguila.png"
+    },
+    {
+        "id":5,
+        "nombre":"Gaseosa Coca Cola",
+        "descripcion":"Bebida azucarada gaseosa. 500ml", 
+        "precio":300,
+        "img":"gaseosaCocalCola.png"
+    },
+    {
+        "id":6,
+        "nombre":"Flynn Paff x5",
+        "descripcion":"Caramelo masticable sabor tutti frutti", 
+        "precio":100,
+        "img":"flynnPaff.png"
+    },
+    {
+        "id":7,
+        "nombre":"Chocolate Block",
+        "descripcion":"Barrita de chocolate con mani", 
+        "precio":150,
+        "img":"chocolateBlock.png"
+    },
+    {
+        "id":8,
+        "nombre":"milkaOreo",
+        "descripcion":"Chocolate con leche relleno de oblea 'Oreo'", 
+        "precio":320,
+        "img":"milkaOreo"
+    },
+    {
+        "id":9,
+        "nombre":"Alfajor Pepito",
+        "descripcion":"Alfajor triple sabor 'pepitos' con chips de chocolate", 
+        "precio":300,
+        "img":"alfajorPepito"
+    }
+]
+

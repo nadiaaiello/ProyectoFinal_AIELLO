@@ -6,26 +6,30 @@ class producto{
        this.descripcion = descripcion,
        this.precio = precio,
        this.img = img
+       this.cantidad= 1
     }
  }
  
  
 
- //Instanciación de objetos: 
- const producto1=new producto(1, "Bon o Bon", "Bombón de chocolate con leche y oblea rellenos con crema de maní.", 100, "bonObon.jpg")
-
- const producto2= new producto(2, "Chicle Bubbaloo","Chicle de fresa relleno de jugoso caramelo líquido de tuttifruti.",20,"chicleBubbaloo.webp")
-
- const producto3= new producto(3, "Chocolate Aguila", "Barrita de chocolate amargo", 240, "chocolateAguila.png" )
- 
- const producto4= new producto(4, "Chupetin POP", "Chupetin Arcor Mr POPs. Sabor blueberry con chicle tutti frutti", 50, "chupetinPop.jpg")
-
- const producto5= new producto(5, "Gaseosa Coca Cola", "Bebida azucarada gaseosa. 500ml", 300, "gaseosaCocaCola.png" )
-
 
  //CREAR UN ARRAY DE OBJETOS
 let stock = []
-stock.push(producto1,producto2,producto3,producto4,producto5)
+const cargarStock = async () =>{
+   const res = await fetch("productos.json")
+   const data = await res.json()
 
+   for(let producto of data){
+       let productoData = new producto(producto.id, producto.nombre, producto.descripcion, producto.precio, producto.img, producto.cantidad)
+       stock.push(productoData)
+   }
+   localStorage.setItem("stock", JSON.stringify(stock))
+}
 
+if (localStorage.getItem("stock")){
+   stock=JSON.parse(localStorage.getItem("stock"))
+}
+else{
+   localStorage.setItem("stock",JSON.stringify(stock))
+}
 
