@@ -35,5 +35,6 @@ if (localStorage.getItem("stock")){
 //ENTRA POR PRIMERA VEZ
 else{
    cargarStock()
+   console.log(stock)
 }
 

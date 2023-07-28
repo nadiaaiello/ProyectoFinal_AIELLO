@@ -8,6 +8,7 @@ let botonFinalizarCompra=document.getElementById("botonFinalizarCompra")
 
 //FUNCTIONS
 function printProductos(array){
+    divProductos.innerHTML=""
     for(let elemento of array){
         let nuevoProducto=document.createElement("div")
         nuevoProducto.className="col-9 col-lg-4"
@@ -170,5 +171,7 @@ else{
     localStorage.setItem("productosEnCarrito",JSON.stringify(productosEnCarrito))
 }
 
-console.log(stock)
-printProductos(stock)
+divProductos.innerText = `Cargando productos`
+setTimeout(()=>{
+    printProductos(stock)
+ },2500)

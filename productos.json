@@ -33,7 +33,7 @@
         "nombre":"Gaseosa Coca Cola",
         "descripcion":"Bebida azucarada gaseosa. 500ml", 
         "precio":300,
-        "img":"gaseosaCocalCola.png"
+        "img":"gaseosaCocaCola.png"
     },
     {
         "id":6,
@@ -54,14 +54,14 @@
         "nombre":"milkaOreo",
         "descripcion":"Chocolate con leche relleno de oblea 'Oreo'", 
         "precio":320,
-        "img":"milkaOreo"
+        "img":"milkaOreo.webp"
     },
     {
         "id":9,
         "nombre":"Alfajor Pepito",
         "descripcion":"Alfajor triple sabor 'pepitos' con chips de chocolate", 
         "precio":300,
-        "img":"alfajorPepito"
+        "img":"alfajorPepito.png"
     }
 ]
 
