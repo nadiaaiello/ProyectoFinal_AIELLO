@@ -15,21 +15,25 @@ class producto{
 
  //CREAR UN ARRAY DE OBJETOS
 let stock = []
-const cargarStock = async () =>{
-   const res = await fetch("productos.json")
-   const data = await res.json()
-
-   for(let producto of data){
-       let productoData = new producto(producto.id, producto.nombre, producto.descripcion, producto.precio, producto.img, producto.cantidad)
-       stock.push(productoData)
-   }
-   localStorage.setItem("stock", JSON.stringify(stock))
+async function cargarStock(){
+    const resp= await fetch("productos.json")
+    const data= await resp.json()
+    for(let a of data){
+      let productoData = new producto(a.id, a.nombre, a.descripcion, a.precio, a.img, producto.cantidad)
+      stock.push(productoData)
+      console.log(stock)
+  }
+  localStorage.setItem("stock", JSON.stringify(stock))
 }
 
+
+//YA HABIA ENTRADO
 if (localStorage.getItem("stock")){
    stock=JSON.parse(localStorage.getItem("stock"))
+
 }
+//ENTRA POR PRIMERA VEZ
 else{
-   localStorage.setItem("stock",JSON.stringify(stock))
+   cargarStock()
 }
 

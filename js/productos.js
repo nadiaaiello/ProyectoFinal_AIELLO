@@ -159,7 +159,6 @@ botonFinalizarCompra.addEventListener("click",()=>{
 
 
 //INICIO DE LA APLICACION
-printProductos(stock)
 
 let productosEnCarrito = []
 let precioTotal =0
@@ -170,3 +169,6 @@ if (localStorage.getItem("productosEnCarrito")){
 else{
     localStorage.setItem("productosEnCarrito",JSON.stringify(productosEnCarrito))
 }
+
+console.log(stock)
+printProductos(stock)
